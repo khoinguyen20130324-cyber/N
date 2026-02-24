@@ -1,0 +1,234 @@
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #0f1117;
+  color: #f5f6fa;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 32px;
+}
+
+.app {
+  width: min(1100px, 95vw);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.app__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #1c1f2a;
+  border-radius: 18px;
+  border: 1px solid #2a2f3d;
+  box-shadow: 0 20px 40px rgba(3, 6, 12, 0.45);
+}
+
+.app__header h1 {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.app__header p {
+  color: #b5bdd8;
+  max-width: 520px;
+}
+
+.app__stats {
+  display: flex;
+  gap: 24px;
+}
+
+.app__stats .label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8f96ad;
+}
+
+.app__stats .value {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.app__content {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+}
+
+.palette {
+  background: #171a24;
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid #262b39;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.palette h2 {
+  font-size: 1.1rem;
+}
+
+.palette__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.palette__button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: #222638;
+  color: #f5f6fa;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.palette__button.is-active {
+  border-color: #7adf7a;
+  background: rgba(122, 223, 122, 0.15);
+}
+
+.palette__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.ghost-button {
+  background: transparent;
+  color: #f5f6fa;
+  border: 1px solid #36405a;
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #b5bdd8;
+  font-size: 0.9rem;
+}
+
+.world {
+  background: #141722;
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid #262b39;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.world__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 4px;
+  width: 100%;
+  max-width: 640px;
+}
+
+.world__grid.has-grid .cell {
+  outline: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cell {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  border-radius: 4px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cell:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.block {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.cell__block {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -6px 12px rgba(0, 0, 0, 0.35);
+}
+
+.block--grass,
+.cell[data-material="grass"] .cell__block {
+  background: linear-gradient(145deg, #54c15e, #2f7a3a);
+}
+
+.block--dirt,
+.cell[data-material="dirt"] .cell__block {
+  background: linear-gradient(145deg, #9c6b3b, #6c4623);
+}
+
+.block--stone,
+.cell[data-material="stone"] .cell__block {
+  background: linear-gradient(145deg, #9da6b3, #626d7a);
+}
+
+.block--sand,
+.cell[data-material="sand"] .cell__block {
+  background: linear-gradient(145deg, #f6d48e, #d5a957);
+}
+
+.block--water,
+.cell[data-material="water"] .cell__block {
+  background: linear-gradient(145deg, #48a4ff, #2b5ca9);
+}
+
+.block--wood,
+.cell[data-material="wood"] .cell__block {
+  background: linear-gradient(145deg, #c58f5b, #82522d);
+}
+
+@media (max-width: 900px) {
+  .app__content {
+    grid-template-columns: 1fr;
+  }
+
+  .palette {
+    order: 2;
+  }
+
+  .world {
+    order: 1;
+  }
+}

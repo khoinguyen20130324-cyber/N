@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minecraft Mini Builder</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <div>
+          <h1>Minecraft Mini Builder</h1>
+          <p>Click a block to place the selected material. Right-click to erase.</p>
+        </div>
+        <div class="app__stats">
+          <div>
+            <span class="label">Placed</span>
+            <span id="placed-count" class="value">0</span>
+          </div>
+          <div>
+            <span class="label">Material</span>
+            <span id="current-material" class="value">Grass</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="app__content">
+        <aside class="palette">
+          <h2>Palette</h2>
+          <div class="palette__buttons" role="radiogroup" aria-label="Block palette">
+            <button class="palette__button is-active" data-material="grass" role="radio" aria-checked="true">
+              <span class="block block--grass"></span>
+              Grass
+            </button>
+            <button class="palette__button" data-material="dirt" role="radio" aria-checked="false">
+              <span class="block block--dirt"></span>
+              Dirt
+            </button>
+            <button class="palette__button" data-material="stone" role="radio" aria-checked="false">
+              <span class="block block--stone"></span>
+              Stone
+            </button>
+            <button class="palette__button" data-material="sand" role="radio" aria-checked="false">
+              <span class="block block--sand"></span>
+              Sand
+            </button>
+            <button class="palette__button" data-material="water" role="radio" aria-checked="false">
+              <span class="block block--water"></span>
+              Water
+            </button>
+            <button class="palette__button" data-material="wood" role="radio" aria-checked="false">
+              <span class="block block--wood"></span>
+              Wood
+            </button>
+          </div>
+          <div class="palette__actions">
+            <button id="clear-grid" class="ghost-button">Clear World</button>
+            <label class="toggle">
+              <input id="grid-toggle" type="checkbox" checked />
+              <span>Show grid</span>
+            </label>
+          </div>
+        </aside>
+
+        <section class="world" aria-label="Minecraft world">
+          <div id="world-grid" class="world__grid" role="grid" aria-live="polite"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
